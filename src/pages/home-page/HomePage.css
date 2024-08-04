@@ -1,0 +1,54 @@
+.home-page{
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+.sidebar{
+  width: 20%;
+  height: 100vh;
+  background-color: #1E1E2D;
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 15px;
+
+  .header, .footer{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .footer{
+    margin-top: auto;
+  }
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 80%;
+  
+  .navbar {
+    height: 80px;  
+    display: flex;
+    align-items:center; 
+    justify-content:end;  
+    padding: 0 20px;  
+    width: 100%;  
+    gap: 20px; 
+  }
+
+}
+
+.dash{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; 
+  align-items: center;         
+  flex-grow: 1;                
+  padding: 20px;               
+  overflow: auto;
+}
+
+

@@ -1,27 +1,22 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getAllExercises } from "../../services/api.service";
 import { getClientsByTrainerId } from "../../services/backend-service/client.service";
 import { addExercise } from "../../services/backend-service/exercise.service";
+import "./ExercisesList.css";
 
 function ExercisesList() {
   const [exercisesList, setExercisesList] = useState([]);
-  const [clientsList, setClientsList] = useState([])
-
-  const getExercises = async () => {
-    const response = await getAllExercises();
-    console.log(response);
-    setExercisesList(response);
-  };
-
+  const [clientsList, setClientsList] = useState([]);
 
   useEffect(() => {
-    getExercises();
-    getClientsByTrainerId(1)
-      .then(res => {
-        console.log(res);
-        setClientsList(res)
+    getAllExercises()
+      .then((res) => {
+        setExercisesList(res);
       })
-
+      .catch((error) => console.log(error));
+    getClientsByTrainerId(1)
+      .then((res) => setClientsList(res))
+      .catch((error) => console.log(error));
   }, []);
 
   const saveExerciseToBackend = async (exercise) => {
@@ -29,39 +24,40 @@ function ExercisesList() {
       name: exercise.name,
       instructions: exercise.instructions,
       bodyPart: exercise.bodyPart,
-      client: { id: 2 }
+      client: { id: 2 },
     };
 
-    addExercise(modifiedExercise)
-      
+    addExercise(modifiedExercise);
   };
 
-  const exercises = exercisesList.map((exercise) => (
-    <>
-      <li key={exercise.id}>{exercise.name}</li>
-      <h4>{exercise.bodyPart}</h4>
-      <img src={exercise.gifUrl} alt="" />
-      
-      <button className="btn btn-primary" onClick={() => saveExerciseToBackend(exercise)}>Add Exercise to Clients list</button>
-    </>
+  const exercises = exercisesList.map((x) => (
+    <div
+      key={x.id}
+      className="card m-3"
+      style={{ width: "220px", heigth: "auto" }}
+    >
+      <img
+        src={x.gifUrl}
+        alt="image"
+        style={{ maxWidth: "150px", heigth: "auto" }}
+        className="card-img-top"
+      />
+      <div className="d-flex flex-column card-body">
+        <h5>{x.name}</h5>
+        <p>
+          Body Part: <strong>{x.bodyPart}</strong>
+        </p>
+        <p>
+          Target Muscles: <strong>{x.target}</strong>
+        </p>
+      </div>
+    </div>
   ));
 
-  const clients = clientsList.map((client) => (
-    <li value={client.id} key={client._id}>{client.clientInfo.name}</li>
-  ))
-
   return (
-    <div className="d-flex gap-5">
-      <div>
-        <ul> {exercises} </ul>
-      </div>
-      <div>
-        <ul>{clients}</ul>
-      </div>
-    
-    </div>
-    
+    <div className="content">{exercises}</div>
   );
+
 }
 
 export default ExercisesList;

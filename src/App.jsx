@@ -1,15 +1,14 @@
-import { useState } from 'react'
-
-import './App.css'
-import ExercisesList from './components/exercises/ExercisesList'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import HomePage from './pages/home-page/HomePage';
+import "./App.css"
 
 function App() {
-
   return (
     <>
-      <ExercisesList />
+      <Routes>
+        <Route path='*' element={<HomePage />}/>
+      </Routes>
     </>
-  )
+  );
 }
-
-export default App
+export default App;

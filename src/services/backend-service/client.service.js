@@ -11,3 +11,9 @@ export function getClientsByTrainerId(trainerId){
     .then((response) => response.data)
     .catch((error) => console.log("Error while fetching in service file: ", error))
 }
+
+export function getClientById(clientId){
+  return service.get("/clients/"+clientId)
+    .then((res) => res.data)
+    .catch((error) => console.log("Error while fetching in service file: ", error))
+}
