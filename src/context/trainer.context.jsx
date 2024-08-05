@@ -1,14 +1,15 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { getTrainer } from "../services/backend-service/trainer.service";
 import { getClientsByTrainerId } from "../services/backend-service/client.service";
+import { getExerciseByClientId } from "../services/backend-service/exercise.service";
 
 const TrainerContext = createContext();
 
 function TrainerProviderWrapper({ children }) {
 
-  const [user, setUser] = useState(null)
-  const [clientsList, setClientsList] = useState([])
-  const [clientId, setClientId] = useState()
+  const [user, setUser] = useState({})
+  const [clientsList, setClientsList] = useState([]) 
+  const [clientId, setClientId] = useState(null)
 
   useEffect(() => {
     getTrainer(1).then((trainer) => {
@@ -19,16 +20,12 @@ function TrainerProviderWrapper({ children }) {
     .catch((error) => console.log(error))
   }, [])
 
-  // console.log( "clients from trainer context",clientsList);
-
   const value = {
     user,
     clientsList,
     setClientId,
     clientId
   }
-
-  //console.log(user?.name)
 
   return (
     <TrainerContext.Provider value={value}>

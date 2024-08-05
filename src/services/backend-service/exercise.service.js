@@ -6,6 +6,14 @@ const service = axios.create(
   }
 )
 
+
+export function getExerciseByClientId(clientId){
+  return service.get("/clients/exercises/"+clientId)
+    .then(list => list.data)
+    .catch((error) => console.error("Error while getting exercise in exercise service: ", error))
+
+}
+
 export function addExercise(exercise){
 
   return service.post("/exercises", exercise)

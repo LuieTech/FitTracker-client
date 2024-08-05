@@ -1,10 +1,12 @@
+import { useLocation } from "react-router-dom";
 import { useTrainerContext } from "../../context/trainer.context";
 import "./Navbar.css";
 
 import { useEffect, useState } from "react";
 
 function Navbar() {
-  const { clientsList } = useTrainerContext();
+  const { clientsList, setClientId } = useTrainerContext();
+  const location = useLocation();
   // const [clients, setClients] = useState([]);
 
   // const getClients = async (trainerId) => {
@@ -13,18 +15,15 @@ function Navbar() {
   //   console.log(response);
   // };
 
-  const { setClientId } = useTrainerContext();
-
   function onClientChange(value) {
     setClientId(value);
-    console.log(value);
   }
 
   useEffect(() => {}, [clientsList]);
 
   return (
     <nav>
-      <select
+      { (location.pathname === "/clients") && <select
         style={{
           width: "170px",
           borderColor: "gray",
@@ -38,7 +37,7 @@ function Navbar() {
             {client.clientInfo.name}
           </option>
         ))}
-      </select>
+      </select>}
     </nav>
   );
 }

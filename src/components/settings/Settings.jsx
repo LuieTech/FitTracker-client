@@ -5,16 +5,26 @@ import React, { useEffect, useState } from 'react'
 
 function Settings() {
 
-  const [trainer, setTrainer] = useState({})
   const {user} = useTrainerContext()
 
-  useEffect(() => {
-    setTrainer(user)
-  }, [user])
-
   return (
-    <div>{trainer?.name}</div>
-  )
+    <div className="trainer-profile">
+      <div className="profile-details">
+        <p>
+          <strong>Name:</strong> {user.name}
+        </p>
+        <p>
+          <strong>Username:</strong> {user.username}
+        </p>
+        <p>
+          <strong>Email:</strong> {user.email}
+        </p>
+        <p>
+          <strong>Phone Number:</strong> {user.phoneNumber}
+        </p>
+      </div>
+    </div>
+  );
 }
 
 export default Settings
