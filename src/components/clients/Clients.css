@@ -1,4 +1,4 @@
-.trainer-profile {
+.client-profile {
   padding: 20px;
   max-width: 500px;
   margin: auto;
@@ -6,6 +6,7 @@
 
 .profile-details p {
   background: #f0f0f0;
+  width: 400px;
   padding: 10px;
   border-radius: 5px;
   margin-bottom: 10px;
@@ -23,4 +24,27 @@
 
 .add-client-btn:hover {
   background-color: #0056b3; /* Darker blue on hover */
+}
+
+.clients-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Adjust based on your design */
+  justify-content: center; /* Aligns items centrally, adjust as needed */
+  padding: 20px;
+}
+
+
+.card {
+  flex: 0 1 220px; /* Do not grow, can shrink, base width of 220px */
+  margin: 10px; /* Provide some spacing around cards */
+  padding: 15px;
+  background-color: #f8f9fa; /* Light background for the card */
+  border-radius: 8px; /* Rounded corners */
+}
+
+.create-form{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
