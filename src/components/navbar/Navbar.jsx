@@ -34,7 +34,7 @@ function Navbar() {
       >
         {clientsList.map((client) => (
           <option key={client.id} value={client.id}>
-            {client.clientInfo.name}
+            {client?.name}
           </option>
         ))}
       </select>}
