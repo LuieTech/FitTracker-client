@@ -9,5 +9,11 @@ const service = axios.create(
 export function getTrainer(trainerId){
   return service.get("/trainers/"+trainerId)
     .then(res => res.data)
-    .catch(error => console.log("Error fetching trainer in service", error))
+    .catch(error => {
+      if(error.response.status === 404) {
+        return ('Trainer not found');
+      } else { 
+        console.log(error.response.data.message)
+       }
+    })
 }
