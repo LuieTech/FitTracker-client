@@ -12,12 +12,15 @@ function TrainerProviderWrapper({ children }) {
   const [clientId, setClientId] = useState(null)
 
   useEffect(() => {
-    getTrainer(1).then((trainer) => {
-      setUser(trainer)
-      return getClientsByTrainerId(trainer.id)
-    })
-    .then((clts) => setClientsList(clts))
-    .catch((error) => console.log(error))
+    getTrainer(1)
+      .then((trainer) => {
+        if(trainer){
+          setUser(trainer)
+          return getClientsByTrainerId(trainer.id)      
+        }
+      })
+      .then((clts) => setClientsList(clts))
+      .catch((error) => console.log(error)) 
   }, [])
 
   const value = {

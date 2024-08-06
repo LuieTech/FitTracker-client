@@ -8,15 +8,22 @@ import ExerciseBox from "../ExerciseBox";
 
 function ExercisesList() {
   const [exercisesList, setExercisesList] = useState([]);
-  // const [clientsList, setClientsList] = useState([]);
-  const {clientsList} = useTrainerContext();
+  const { clientsList } = useTrainerContext();
+
+  const storedExercises = localStorage.getItem("");
 
   useEffect(() => {
-    getAllExercises()
-      .then((res) => {
-        setExercisesList(res);
-      })
-      .catch((error) => console.log(error));
+    const storedExercises = localStorage.getItem("");
+    if (storedExercises) {
+      setExercisesList(JSON.parse(storedExercises));
+    } else {
+      getAllExercises()
+        .then((exercises) => {
+          setExercisesList(exercises);
+          localStorage.setItem("exercises", JSON.stringify(exercises));
+        })
+        .catch((error) => console.error("Error fetching exercises:", error));
+    }
   }, []);
 
   const saveExerciseToBackend = async (exercise) => {
@@ -34,10 +41,7 @@ function ExercisesList() {
     <ExerciseBox key={x.id} {...x} />
   ));
 
-  return (
-    <div className="content">{allExercises}</div>
-  );
-
+  return <div className="content">{allExercises}</div>;
 }
 
 export default ExercisesList;

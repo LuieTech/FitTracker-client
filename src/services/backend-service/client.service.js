@@ -16,11 +16,23 @@ export function createClient(body){
 export function getClientsByTrainerId(trainerId){
   return service.get(`/trainers/clients/${trainerId}`)
     .then((response) => response.data)
-    .catch((error) => console.log("Error while fetching in service file: ", error))
+    .catch((error) => {
+      if(error.response.status === 404 || error.response.status === 400) {
+        return Promise.resolve([]);
+      } else { 
+        console.log(error.response.data.message)
+       }
+    })
 }
 
 export function getClientById(clientId){
   return service.get("/clients/"+clientId)
     .then((res) => res.data)
-    .catch((error) => console.log("Error while fetching in service file: ", error))
+    .catch((error) => {
+      if(error.response.status === 404) {
+        return Promise.resolve("Client notfound");
+      } else { 
+        console.log(error.response.data.message)
+       }
+    })
 }
