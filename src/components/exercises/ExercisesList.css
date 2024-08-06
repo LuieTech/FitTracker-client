@@ -3,6 +3,14 @@
   display: flex;
   flex-wrap: wrap;             
   justify-content: center;     
-  align-items: flex-start;    
+  align-items:start;    
   width: 100%;
+}
+
+.select{
+  display: flex;
+  flex-wrap: wrap;             
+  justify-content: center;  
+  margin-bottom: 60px;   
+  
 }

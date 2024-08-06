@@ -6,7 +6,7 @@ const service = axios.create(
   }
 )
 
-export function getTrainer(trainerId){
+export function fetchTrainer(trainerId){
   return service.get("/trainers/"+trainerId)
     .then(res => res.data)
     .catch(error => {

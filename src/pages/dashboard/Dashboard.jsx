@@ -7,18 +7,18 @@ import Settings from '../../components/settings/Settings'
 import "./Dashboard.css"
 import CreateClient from '../../components/forms/CreateClient'
 
-function Dashboard() {
+function Dashboard({id}) {
   return (
-    <div>
+    <>
       <Routes>
         <Route path="/exercises" element={<ExercisesList />} />
         <Route path="/clients" element={<Clients />} />
         <Route path="/settings" element={<Settings />} />
         <Route path='/add-client' element={<CreateClient />} />
       </Routes>
-    </div>
+    </>
       
   )
 }
 
-export default Dashboard
+export default Dashboard;
