@@ -25,6 +25,10 @@
     margin-left: 10%;
   }
 
+  .header{
+    padding-top: 15%;
+  }
+
   .footer{
     margin-top: auto;
     display: flex;
