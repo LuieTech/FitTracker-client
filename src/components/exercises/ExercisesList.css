@@ -1,20 +1,17 @@
-
 .content{
   display: flex;
   flex-wrap: wrap;             
   justify-content: center;     
-  align-items:start;    
+  align-items: flex-start;    
   width: 100%;
   gap: 60px;
 }
-
 .card{
   display: flex;
   justify-content: center;
   align-items: center;
   height: 300px;
 }
-
 .box-btn{
   display: flex;
   flex-direction: column;

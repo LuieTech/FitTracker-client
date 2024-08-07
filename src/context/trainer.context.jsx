@@ -14,8 +14,17 @@ function TrainerProviderWrapper({ children }) {
   }
 
   const getClients = async (trainerId) => {
-    const response = await getClientsByTrainerId(trainerId)
-    return response
+    if(trainer){
+      try {
+        const response = await getClientsByTrainerId(trainerId)
+        return response
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      console.log("No trainer id");
+    }
+    
   }
 
   useEffect(()=> {

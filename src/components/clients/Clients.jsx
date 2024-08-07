@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
-import { createClient, getClientById, getClientsByTrainerId } from "../../services/backend-service/client.service";
+import { createClient } from "../../services/backend-service/client.service";
 import { useTrainerContext } from "../../context/trainer.context";
 import "./Clients.css";
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import CreateClient from "../forms/CreateClient";
 
-function Clients({id}) {
+function Clients() {
   const [clientsList, setClientsList] = useState([]);
   const { trainer, getClients } = useTrainerContext();
 
