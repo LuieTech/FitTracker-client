@@ -37,6 +37,7 @@ function ExercisesList() {
     if(clientId && exercise){
       try {
         const modifiedExercise = {
+          gifUrl: exercise.gifUrl,
           name: exercise.name,
           instructions: exercise.instructions,
           bodyPart: exercise.bodyPart,
