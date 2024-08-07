@@ -6,7 +6,7 @@ import CreateClient from "../forms/CreateClient";
 
 function Clients() {
   const [clientsList, setClientsList] = useState([]);
-  const { trainer, getClients } = useTrainerContext();
+  const { trainer, trainerId, getClients } = useTrainerContext();
 
   const obtainClients = async (id) => {
     const response = await getClients(id);
@@ -14,18 +14,21 @@ function Clients() {
   }
 
   useEffect(() => {
-      obtainClients(trainer?.id)
+    trainerId &&
+      obtainClients(trainerId)
   }, [trainer]);
 
   const clients = clientsList.map(cl => (
     <div key={cl.id} className="card">
       <h5 className="card-title">{cl.name}</h5>
       <p>Ph: {cl.phoneNumber}</p>
-      <p>E-mail: {cl.email}</p>
+      <p>Email: {cl.email}</p>
     </div>
   ));
 
   function handleCreate(data) {
+
+    // console.log(data);
    
   createClient(data)
     .then(() => obtainClients(trainer?.id))

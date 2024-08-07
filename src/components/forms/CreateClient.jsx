@@ -11,10 +11,11 @@ function CreateClient({ onCreate }) {
     address: "",
     phoneNumber: "",
     email: "",
-    comment: "",
+    comment: ""
   });
 
   const handleInputChange = (e) => {
+    // console.log(e.target.value);
     const { name, value } = e.target;
     setFormData({
       ...formData,
@@ -26,6 +27,14 @@ function CreateClient({ onCreate }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     onCreate(formData);
+    setFormData({
+      trainer: "",
+      name: "",
+      address: "",
+      phoneNumber: "",
+      email: "",
+      comment: ""
+    });
   };
 
   return (
@@ -69,6 +78,9 @@ function CreateClient({ onCreate }) {
           className="form-control-sm inputs ps-3"
           id="exampleFormControlTextarea1"
           rows="3"
+          name="comment"
+          value={formData.comment}
+          onChange={handleInputChange}
         ></textarea>
       <button
         className="btn btn-sm btn-success font-weight-bold m-3"

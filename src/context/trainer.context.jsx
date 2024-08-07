@@ -7,10 +7,12 @@ const TrainerContext = createContext();
 function TrainerProviderWrapper({ children }) {
 
   const [trainer, setTrainer] = useState({})
+  const [trainerId, setTrainerId] = useState(null)
 
   const getTrainer = async () => {
     const response = await fetchTrainer(1)
     setTrainer(response)
+    setTrainerId(response.id)
   }
 
   const getClients = async (trainerId) => {
@@ -28,11 +30,12 @@ function TrainerProviderWrapper({ children }) {
   }
 
   useEffect(()=> {
-    getTrainer();
+    getTrainer()
   }, [])
 
   const value = {
     trainer,
+    trainerId,
     getClients,
     getTrainer,
 

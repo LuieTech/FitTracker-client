@@ -31,8 +31,8 @@ function ExercisesList() {
 
   const saveExerciseToBackend = ( exercise ) => {
 
-    console.log("Selected Client ID: ", clientId); 
-    console.log("Exercise details: ", exercise);
+    // console.log("Selected Client ID: ", clientId); 
+    // console.log("Exercise details: ", exercise);
 
     if(clientId && exercise){
       try {
@@ -64,8 +64,6 @@ function ExercisesList() {
       </button>
     </div>
   ));
-
-  console.log(allExercises);
 
   return <div className="content">{allExercises}</div>;
 
