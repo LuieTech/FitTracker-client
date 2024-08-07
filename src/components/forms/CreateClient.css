@@ -1,8 +1,13 @@
 .inputs{
-  border-radius: 15px;
-  margin: 0 10px;
-  padding-left: 2px;
+  border-radius: 10px;
   background: #f0f0f0;
   border: 2px solid #ced4da;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1)
+}
+
+.form-inputs{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
 }

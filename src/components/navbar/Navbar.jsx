@@ -5,21 +5,16 @@ import "./Navbar.css";
 import { useEffect, useState } from "react";
 
 function Navbar() {
-  const { clientsList, setClientId } = useTrainerContext();
+  const { trainer, getClients } = useTrainerContext();
   const location = useLocation();
-  // const [clients, setClients] = useState([]);
-
-  // const getClients = async (trainerId) => {
-  //   const response = await getClientsByTrainerId(trainerId);
-  //   setClients(response);
-  //   console.log(response);
-  // };
 
   function onClientChange(value) {
-    setClientId(value);
+    console.log(value);
   }
 
-  useEffect(() => {}, [clientsList]);
+  useEffect(() => {
+    
+  }, []);
 
   return (
     <nav>

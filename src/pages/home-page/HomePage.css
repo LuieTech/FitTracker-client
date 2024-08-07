@@ -22,10 +22,20 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    margin-left: 10%;
   }
 
   .footer{
     margin-top: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 25px;
+    padding-bottom: 15%;
+
+    img{
+      width: 60px;
+      border-radius: 40px;
+    }
   }
 }
 .main {
@@ -48,12 +58,10 @@
 
 .dash{
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start; 
-  align-items: center;         
-  flex-grow: 1;                
-  padding: 20px;               
-  overflow: auto;
+  align-items: flex-start;
+  justify-content: center;
+  flex-grow: 1;
+  padding-top: 60px;
 }
 
 

@@ -1,24 +1,24 @@
 import { useEffect, useState } from "react";
-import { createClient, getClientById } from "../../services/backend-service/client.service";
+import { createClient, getClientById, getClientsByTrainerId } from "../../services/backend-service/client.service";
 import { useTrainerContext } from "../../context/trainer.context";
 import "./Clients.css";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import CreateClient from "../forms/CreateClient";
 
-function Clients() {
-  const [client, setClient] = useState(null);
-  const { clientId, clientsList, setClientsList } = useTrainerContext();
-  const [list, setList] = useState(clientsList)
-  const navigate = useNavigate()
+function Clients({id}) {
+  const [clientsList, setClientsList] = useState([]);
+  const { trainer, getClients } = useTrainerContext();
+
+  const obtainClients = async (id) => {
+    const response = await getClients(id);
+    setClientsList(response)
+  }
 
   useEffect(() => {
-    setList(clientsList)
-    clientId && getClientById(clientId)
-      .then(res => setClient(res))
-      .catch(err => console.log(err));
-  }, [clientId, clientsList]);
+      obtainClients(trainer?.id)
+  }, [trainer]);
 
-  const clients = list.map(cl => (
+  const clients = clientsList.map(cl => (
     <div key={cl.id} className="card">
       <h5 className="card-title">{cl.name}</h5>
       <p>Ph: {cl.phoneNumber}</p>
@@ -26,36 +26,23 @@ function Clients() {
     </div>
   ));
 
-  const handleCreate = (data) => {
-    createClient(data)
-      .then((newClient) => {
-        // Suponiendo que newClient es el cliente recién creado devuelto por el servidor
-        const updatedClients = [...clientsList, newClient];
-        setClientsList(updatedClients); // Actualiza el estado en el contexto
-        navigate("/clients"); // Navega sin recargar
-      })
-      .catch((error) => console.log("error creating client in form", error))
-  }
-  
+  function handleCreate(data) {
+   
+  createClient(data)
+    .then(() => obtainClients(trainer?.id))
+    .catch((error) => console.log(error))
+
+  }  
 
   return (
     <section className="main">
-      <div className="create-form">
-        {!client && <CreateClient onCreate={handleCreate}/>}
+      <div>
+        <CreateClient onCreate={handleCreate}/>
       </div>
       
       <div className="clients-container">
-        {client ? (
-          <div className="client-profile">
-            <div className="profile-details">
-              <p><strong>Name:</strong> {client.name}</p>
-              <p><strong>Email:</strong> {client.email}</p>
-              <p><strong>Phone Number:</strong> {client.phoneNumber}</p>
-            </div>
-          </div>
-        ) : (
           <>{clients}</>
-        )}
+
       </div>
     </section>
   );

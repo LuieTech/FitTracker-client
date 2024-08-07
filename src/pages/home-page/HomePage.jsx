@@ -1,13 +1,14 @@
 
 import Sidebar from "../../components/sidebar/Sidebar";
-import Navbar from "../../components/navbar/Navbar";
+// import Navbar from "../../components/navbar/Navbar";
 import "./HomePage.css";
 import Dashboard from "../dashboard/Dashboard";
 import { useTrainerContext } from "../../context/trainer.context";
+import "./HomePage.css"
 
 function HomePage() {
 
-  const {user} = useTrainerContext()
+  const {trainer} = useTrainerContext()
 
   return (
     <div className="home-page">
@@ -21,16 +22,16 @@ function HomePage() {
         </div>
         
         <footer className="footer">
-          <img src="" alt="traiiner-img" />
-          <span>{user.name}</span>
+          <img src="../../../public/images/albert-ironhacker.jpeg" alt="trainer-img" />
+          <span>{trainer.name}</span>
         </footer>
       </aside>
       <section className="main">
-        <nav className="navbar">
+        {/* <nav className="navbar">
           <Navbar />
-        </nav>
+        </nav> */}
         <article className="dash">
-          <Dashboard />
+          <Dashboard {...trainer}/>
         </article>
       </section>
     </div>

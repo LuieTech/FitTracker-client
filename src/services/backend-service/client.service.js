@@ -14,7 +14,7 @@ export function createClient(body){
 }
 
 export function getClientsByTrainerId(trainerId){
-  return service.get(`/trainers/clients/${trainerId}`)
+  return service.get(`/trainers/clients/`+trainerId)
     .then((response) => response.data)
     .catch((error) => {
       if(error.response.status === 404 || error.response.status === 400) {

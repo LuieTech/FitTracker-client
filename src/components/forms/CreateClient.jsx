@@ -1,12 +1,11 @@
-import React, { useState } from 'react'
-import { createClient } from '../../services/backend-service/client.service';
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import "./CreateClient.css"
 import { useTrainerContext } from '../../context/trainer.context';
-
+import "./CreateClient.css"
 function CreateClient({onCreate}) {
-  const navigate = useNavigate()
-  const {user} = useTrainerContext()
+
+  const {trainer} = useTrainerContext()
 
   const [formData, setFormData] = useState({
     trainer: "",
@@ -21,7 +20,7 @@ const handleInputChange = (e) => {
     setFormData({
         ...formData,
         [name]: value,
-        trainer: {id: user?.id}
+        trainer: {id: trainer?.id}
     });
 };
 
@@ -31,9 +30,9 @@ const handleSubmit = (e) => {
 }
 
 return (
-    <form className='form d-flex' onSubmit={handleSubmit}>
+    <form className='form-inputs d-flex' onSubmit={handleSubmit}>
         <input
-            className='inputs'
+            className='inputs ps-3'
             name="name"
             value={formData.name}
             onChange={handleInputChange}
@@ -41,7 +40,7 @@ return (
             required
         />
         <input
-            className='inputs'
+            className='inputs ps-3'
             name="address"
             value={formData.address}
             onChange={handleInputChange}
@@ -49,7 +48,7 @@ return (
             required
         />
         <input
-            className='inputs'
+            className='inputs ps-3'
             name="phoneNumber"
             value={formData.phoneNumber}
             onChange={handleInputChange}
@@ -58,7 +57,7 @@ return (
             required
         />
         <input
-            className='inputs'
+            className='inputs ps-3'
             name="email"
             value={formData.email}
             onChange={handleInputChange}
@@ -66,7 +65,7 @@ return (
             type="email"
             required
         />
-        <button className='btn btn-sm btn-success font-weight-bold' type="submit">Add Client</button>
+        <button className='btn btn-sm btn-success font-weight-bold m-3' type="submit">Add Client</button>
     </form>
 );
 }
