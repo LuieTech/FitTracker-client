@@ -1,6 +1,9 @@
 
+import "./exercises/ExercisesList.css"
+
 function ExerciseBox({ id, gifUrl, name, bodyPart, target, onSelect }) {
   return (
+
     
       <div
         key={id}
@@ -23,6 +26,7 @@ function ExerciseBox({ id, gifUrl, name, bodyPart, target, onSelect }) {
             Target Muscles: <strong>{target}</strong>
           </p>
         </div>
+
       </div>
   );
 }
