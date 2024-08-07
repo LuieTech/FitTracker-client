@@ -38,10 +38,26 @@ function ExercisesList() {
   };
 
   const allExercises = exercisesList.map((x) => (
-    <ExerciseBox key={x.id} {...x} />
+    <div key={x.id} className="box-btn">
+      <ExerciseBox  {...x} />
+      <button className="btn tbn-sm btn-success">add to client</button>
+    </div>  
   ));
 
   return <div className="content">{allExercises}</div>;
 }
 
 export default ExercisesList;
+
+
+/* 
+      <article key={x.id} className="d-flex flex-column card width-50">
+          <ExerciseBox x={x} />
+          <button 
+            className="add-btn" 
+            onClick={() => saveExerciseToBackend(x)}
+          >
+            Add
+          </button>
+      </article>
+*/

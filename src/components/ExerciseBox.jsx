@@ -1,16 +1,16 @@
-import React from "react";
+import "./exercises/ExercisesList.css"
 
 function ExerciseBox({id, gifUrl, name, bodyPart, target}) {
   return (
     <div
       key={id}
       className="card m-3"
-      style={{ width: "220px", heigth: "auto" }}
+      style={{ width: "260px", heigth: "auto" }}
     >
       <img
         src={gifUrl}
         alt="image"
-        style={{ maxWidth: "150px", heigth: "auto" }}
+        style={{ maxWidth: "150px" }}
         className="card-img-top"
       />
       <div className="d-flex flex-column card-body">
