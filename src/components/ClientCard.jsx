@@ -8,7 +8,7 @@ export default function ClientCard({
   handleOnDelete,
   showList
 }) {
-    
+
   return (
     <div className="d-flex flex-column align-items-center pb-5">
       <section className="d-flex">
@@ -17,7 +17,7 @@ export default function ClientCard({
             <img
               src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
               alt="Avatar"
-              width="50%"
+              width="40%"
               className="mb-3"
             />
             <h5>{name}</h5>
