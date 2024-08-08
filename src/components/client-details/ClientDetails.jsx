@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { getClientById } from "../../services/backend-service/client.service";
 import "./ClientDetails.css";
-import ProfileCard from "../ProfileCard";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { deleteClientById, getClientById } from "../../services/backend-service/client.service";
+import ClientCard from "../ClientCard";
 import { getExerciseByClientId } from "../../services/backend-service/exercise.service";
 import ExerciseCard from "../ExerciseCard";
 
@@ -11,6 +11,7 @@ function ClientDetails() {
   const [client, setClient] = useState(null);
   const [exerciseList, setExerciseList] = useState([])
   const [showList, setShowList] = useState(false)
+  const navigate = useNavigate()
 
   const getClient = async (id) => {
     const response = await getClientById(id);
@@ -21,6 +22,12 @@ function ClientDetails() {
     const response = await getExerciseByClientId(id)
     setExerciseList(response)
   }
+
+  const deleteClient = async (id) => {
+      const response = await deleteClientById(id)
+      console.log(response);
+      navigate('/clients')
+  } 
 
   useEffect(() => {
     getClient(clientId);
@@ -38,12 +45,10 @@ function ClientDetails() {
     setShowList((prev) => !prev)    
   }
 
-  // if(!exerciseList.length) return <h1 className="text-muted">No exercise added yet</h1>
-
   return (
  
     <div>
-      <ProfileCard {...client} handleOnClick={handleShowListButton}/>
+      <ClientCard {...client} handleOnClick={handleShowListButton} showList={showList} handleOnDelete={() => deleteClient(client.id)}/>
       {exerciseList.length ? (
         <>
           <div className="exercise-card">

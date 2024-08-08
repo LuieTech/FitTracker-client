@@ -38,7 +38,7 @@ function CreateClient({ onCreate }) {
   };
 
   return (
-    <form className=" form-inputs d-flex" onSubmit={handleSubmit}>
+    <form className=" form-inputs d-flex flex-wrap align-items-center col-10" onSubmit={handleSubmit}>
       <input
         className="inputs ps-3 form-control-sm"
         name="name"
@@ -74,7 +74,8 @@ function CreateClient({ onCreate }) {
         type="email"
         required
       />
-      <textarea
+      <div>
+        <textarea
           className="form-control-sm inputs ps-3"
           id="exampleFormControlTextarea1"
           rows="3"
@@ -82,13 +83,15 @@ function CreateClient({ onCreate }) {
           value={formData.comment}
           onChange={handleInputChange}
           placeholder="comment..."
-      />        
+        /> 
+      </div>
+
       <button
-        className="btn btn-sm btn-success font-weight-bold m-3"
-        type="submit"
-      >
-        Add Client
-      </button>
+          className="btn btn-sm btn-success" 
+          type="submit"
+        >
+          Create Client
+        </button>
     </form>
   );
 }

@@ -1,5 +1,5 @@
 import { useTrainerContext } from "../../context/trainer.context"
-import ProfileCard from "../ProfileCard";
+import ClientCard from "../ClientCard";
 import TrainerCard from "../TrainerCard";
 import "./Settings.css"
 
@@ -12,6 +12,13 @@ function Settings() {
   if (!trainer) return <div>Loading...</div>;
 
   return (
+    <TrainerCard {...trainer} />
+  );
+}
+
+export default Settings
+
+
     // <div className="trainer-profile">
     //   <div className="profile-details">
     //     <p>
@@ -28,9 +35,3 @@ function Settings() {
     //     </p>
     //   </div>
     // </div>
-
-    <TrainerCard {...trainer} />
-  );
-}
-
-export default Settings

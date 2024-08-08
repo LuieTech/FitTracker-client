@@ -34,3 +34,15 @@ export function getClientById(clientId){
        }
     })
 }
+
+export function deleteClientById(clientId){
+  return service.delete("/clients/"+clientId)
+    .then((res) => res.data)
+    .catch((error) => {
+      if(error.response.status === 404) {
+        return Promise.resolve("Client notfound");
+      } else { 
+        console.log(error.response.data.message)
+      }
+    })
+}

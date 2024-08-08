@@ -22,8 +22,11 @@ function Clients() {
     <Link to={`/client-details/${cl.id}`} key={cl.id}>
       <div  className="card">
         <h5 className="card-title">{cl.name}</h5>
-        <p>Ph: {cl.phoneNumber}</p>
-        <p>Email: {cl.email}</p>
+        <div className="d-flex flex-column gap-2 pt-2">
+          <p className="p"><i className="fas fa-phone me-2 "></i>{cl.phoneNumber}</p>
+          <p><i className="fas fa-envelope me-2"></i>{cl.email}</p>
+        </div>
+        
       </div>
     </Link>
   
@@ -37,7 +40,7 @@ function Clients() {
 
   return (
     <section className="main">
-      <div>
+      <div className="clients-container">
         <CreateClient onCreate={handleCreate} />
       </div>
 

@@ -30,7 +30,7 @@ function SelectClient({ onSelect }) {
   };
 
   return (
-    <div className="">
+    <div className="pb-2">
       <select
         className="form-select"
         aria-label="Default select example"
