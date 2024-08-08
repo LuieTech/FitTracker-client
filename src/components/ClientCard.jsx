@@ -6,7 +6,8 @@ export default function ClientCard({
   comment,
   handleOnClick,
   handleOnDelete,
-  showList
+  showList,
+  random
 }) {
 
   return (
@@ -15,10 +16,13 @@ export default function ClientCard({
         <div className="position-relative">
           <div className="text-center text-black d-flex flex-column align-items-center gap-1">
             <img
-              src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
+              src={`https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/${random()}.jpg`}
+              
               alt="Avatar"
-              width="40%"
-              className="mb-3"
+              width="200px"
+              className="m-4 "
+              style={{borderRadius:"50%"}}
+              
             />
             <h5>{name}</h5>
             <p>Web Developer</p>

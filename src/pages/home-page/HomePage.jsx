@@ -22,7 +22,7 @@ function HomePage() {
         </div>
         
         <footer className="footer">
-          <img src="../../../public/images/albert-ironhacker.jpeg" alt="trainer-img" />
+          <img src="../../../public/images/luie.JPG" alt="trainer-img"/>
           <span className="fw-bold">{trainer.name}</span>
         </footer>
       </aside>

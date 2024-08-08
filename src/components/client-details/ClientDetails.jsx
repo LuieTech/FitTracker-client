@@ -38,16 +38,22 @@ function ClientDetails() {
     
   }
 
+
+
+  const randomNum = () => {
+    let randomNumber = Math.floor( Math.random() * 50 ) + 300
+    return randomNumber;
+  }
+  
+
   useEffect(() => {
     getClient(clientId);
     exerciseList && getExercises(clientId)
+    randomNum()    
   }, [clientId]);
 
   const list = exerciseList.map((exercise => (
-    
       <ExerciseCard  key={exercise.id}  {...exercise} handleOnDelete={() => deleteExercise(exercise.id)}/>
-  
-      
   )))
 
   const handleShowListButton = () => {
@@ -57,7 +63,7 @@ function ClientDetails() {
   return (
  
     <div>
-      <ClientCard {...client} handleOnClick={handleShowListButton} showList={showList} handleOnDelete={() => deleteClient(client.id)}/>
+      <ClientCard {...client} handleOnClick={handleShowListButton} showList={showList} handleOnDelete={() => deleteClient(client.id)} random={randomNum}/>
       {exerciseList.length ? (
         <>
           <div className="exercise-card">
