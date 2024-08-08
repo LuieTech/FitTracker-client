@@ -11,7 +11,7 @@ function TrainerCard({name, username, email, phoneNumber}) {
             <img
               src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
               alt="Avatar"
-              width="50%"
+              width="40%"
               className="mb-3"
             />
             <h5>{name}</h5>
@@ -38,7 +38,7 @@ function TrainerCard({name, username, email, phoneNumber}) {
             <div className="row pt-1">
               <div className="col-6 mb-3">
                 <button   className="btn btn-sm btn-success">
-                <i className="fas fa-calendar-alt me-2"></i><a href="https://calendar.google.com/calendar/u/0/r">Calendar</a>
+                <i className="fas fa-calendar-alt me-2"></i><a href="https://calendar.google.com/calendar/u/0/r" target="_blank">Calendar</a>
                 </button>
               </div>
             </div>

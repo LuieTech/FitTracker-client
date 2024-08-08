@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { deleteClientById, getClientById } from "../../services/backend-service/client.service";
 import ClientCard from "../ClientCard";
-import { getExerciseByClientId } from "../../services/backend-service/exercise.service";
+import { deleteExerciseById, getExerciseByClientId } from "../../services/backend-service/exercise.service";
 import ExerciseCard from "../ExerciseCard";
 
 function ClientDetails() {
@@ -29,6 +29,15 @@ function ClientDetails() {
       navigate('/clients')
   } 
 
+  const deleteExercise = async (id) => {
+
+    const response = await deleteExerciseById(id)
+    console.log(response);
+    getClient(clientId);
+    exerciseList && getExercises(clientId)  
+    
+  }
+
   useEffect(() => {
     getClient(clientId);
     exerciseList && getExercises(clientId)
@@ -36,7 +45,7 @@ function ClientDetails() {
 
   const list = exerciseList.map((exercise => (
     
-      <ExerciseCard  key={exercise.id}  {...exercise} />
+      <ExerciseCard  key={exercise.id}  {...exercise} handleOnDelete={() => deleteExercise(exercise.id)}/>
   
       
   )))

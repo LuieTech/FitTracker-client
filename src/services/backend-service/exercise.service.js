@@ -21,3 +21,9 @@ export function addExercise(exercise){
     .catch((error) => console.error("Error while adding exercise in service file: ", error))
 
 }
+
+export function deleteExerciseById(id){
+  return service.delete("/exercises/"+id)
+    .then((res) => console.log(res))
+    .catch((error) => console.error("Error while adding exercise in service file: ", error))
+}
