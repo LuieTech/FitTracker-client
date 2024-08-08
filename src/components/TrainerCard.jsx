@@ -9,10 +9,11 @@ function TrainerCard({name, username, email, phoneNumber}) {
         <div>
           <div className="text-center text-black">
             <img
-              src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
+              src="../../../public/images/luie.JPG"
               alt="Avatar"
-              width="40%"
-              className="mb-3"
+              width="210px"
+              className="m-4"
+              style={{borderRadius:"50%"}}
             />
             <h5>{name}</h5>
             <p>Trainer</p>

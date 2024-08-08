@@ -19,8 +19,8 @@ export default function ClientCard({
               src={`https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/${random()}.jpg`}
               
               alt="Avatar"
-              width="200px"
-              className="m-4 "
+              width="210px"
+              className="m-4"
               style={{borderRadius:"50%"}}
               
             />
