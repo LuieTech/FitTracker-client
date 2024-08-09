@@ -6,13 +6,15 @@ const service = axios.create(
   }
 )
 
+//Create
 export function createClient(body){
   console.log("body client desde el service", body)
   return service.post('/clients', body)
     .then((res) => res.data)
-    .catch((err) => console.log("Error while creating client in service: ", error))
+    .catch((error) => console.log("Error while creating client in service: ", error))
 }
 
+//Read
 export function getClientsByTrainerId(trainerId) {
   return service.get(`/trainers/clients/`+trainerId)
     .then((response) => response.data)
@@ -35,6 +37,7 @@ export function getClientById(clientId){
     })
 }
 
+//Delete
 export function deleteClientById(clientId){
   return service.delete("/clients/"+clientId)
     .then((res) => res.data)
@@ -45,4 +48,9 @@ export function deleteClientById(clientId){
         console.log(error.response.data.message)
       }
     })
+}
+
+//Update
+export function updateComment(id, comment){
+  return service.patch(`/clients/${id}/comment`, comment)
 }
