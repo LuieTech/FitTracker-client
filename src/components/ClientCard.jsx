@@ -1,5 +1,12 @@
+import { useState } from "react";
+import {
+  getClientById,
+  updateComment,
+} from "../services/backend-service/client.service";
+import { useTrainerContext } from "../context/trainer.context";
 
 export default function ClientCard({
+  id,
   name,
   email,
   phoneNumber,
@@ -7,8 +14,26 @@ export default function ClientCard({
   handleOnClick,
   handleOnDelete,
   showList,
-  random
+  random,
+  reloadClient,
 }) {
+  
+  const { trainerId } = useTrainerContext();
+  const [edit, setEdit] = useState(false);
+  const [updatedComment, setUpdatedComment] = useState({ comment: "" });
+
+  const handleOnChange = (e) => {
+    const { name, value } = e.target;
+    setUpdatedComment({
+      [name]: value,
+    });
+  };
+
+  const handleEdit = async (id, updatedComment) => {
+    const response = await updateComment(id, updatedComment);
+    setEdit(false);
+    reloadClient(id);
+  };
 
   return (
     <div className="d-flex flex-column align-items-center pb-5">
@@ -17,40 +42,90 @@ export default function ClientCard({
           <div className="text-center text-black d-flex flex-column align-items-center gap-1">
             <img
               src={`https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/${random()}.jpg`}
-              
               alt="Avatar"
               width="210px"
               className="m-4"
-              style={{borderRadius:"50%"}}
-              
+              style={{ borderRadius: "50%" }}
             />
             <h5>{name}</h5>
             <p>Web Developer</p>
-            <button onClick={handleOnClick} className="btn btn-outline-info" role="button" >
+            <button
+              onClick={handleOnClick}
+              className="btn btn-outline-info"
+              role="button"
+            >
               {!showList ? "show more" : "show less"}
             </button>
-
           </div>
         </div>
         <div className="info">
           <div className="card-body p-4">
-            <h6>Information <i onClick={handleOnDelete} className="btn btn-danger fa fa-trash-alt ms-5" aria-hidden="true"></i></h6> 
+            <h6>
+              Information{" "}
+              <i
+                onClick={handleOnDelete}
+                className="btn btn-danger fa fa-trash-alt ms-5"
+                aria-hidden="true"
+              ></i>
+            </h6>
             <hr className="mt-3 mb-4" />
             <div className="row pt-1 mb-4">
               <div className="col- mb-3">
-                <p className="text-muted"><i className="fas fa-envelope me-2"></i>{email}</p>
+                <p className="text-muted">
+                  <i className="fas fa-envelope me-2"></i>
+                  {email}
+                </p>
               </div>
               <div className="col- mb-3">
-                <p className="text-muted"><i className="fas fa-phone me-2"></i>{phoneNumber}</p>
+                <p className="text-muted">
+                  <i className="fas fa-phone me-2"></i>
+                  {phoneNumber}
+                </p>
               </div>
             </div>
             <h6>Notes:</h6>
             <hr className="mt-3  mb-4" />
-            <div className="row pt-1">
-              <div className="col-6 mb-3 d-flex">
-                <i className="fas fa-comments me-3"></i>
-                <p className="text-muted">{comment}</p>
-              </div>
+            <div className="">
+              {edit ? (
+                <textarea
+                  autoFocus
+                  placeholder="comment here "
+                  name="comment"
+                  value={updatedComment.comment}
+                  onChange={handleOnChange}
+                  onBlur={() => {
+                      handleEdit(id, updatedComment);
+                      setEdit(false);
+                  }}
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter") {
+                      event.preventDefault();
+                      handleEdit(id, updatedComment);
+                    }
+                  }}
+                />
+              ) : (
+                <div className="d-flex flex-columns">
+                  <div className="d-flex flex-column gap-3">
+                    <div>
+                      <i className="fas fa-comments m-2 "></i>
+                    </div>
+                    <div>
+                      <i
+                        className="fas fa-edit btn-sm btn btn-secondary"
+                        role="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setEdit(true);
+                        }}
+                      ></i>
+                    </div>
+                  </div>
+                  <div className="ms-3">
+                    <p>{comment}</p>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
