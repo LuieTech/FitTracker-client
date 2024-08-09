@@ -41,17 +41,9 @@ function ClientDetails() {
     exerciseList && getExercises(clientId);
   };
 
-  const randomNum = () => {
-    let randomNumber = Math.floor(Math.random() * 50) + 300;
-    return randomNumber;
-  };
-
-
-
   useEffect(() => {
     getClient(clientId);
     exerciseList && getExercises(clientId);
-    randomNum();
   }, [clientId]);
 
   const list = exerciseList.map((exercise) => (
@@ -73,7 +65,6 @@ function ClientDetails() {
         handleOnClick={handleShowListButton}
         showList={showList}
         handleOnDelete={() => deleteClient(client.id)}
-        random={randomNum}
         reloadClient={getClient}
       />
       {exerciseList.length ? (

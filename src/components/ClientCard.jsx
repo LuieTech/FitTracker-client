@@ -14,7 +14,6 @@ export default function ClientCard({
   handleOnClick,
   handleOnDelete,
   showList,
-  random,
   reloadClient,
 }) {
   
@@ -41,7 +40,7 @@ export default function ClientCard({
         <div className="position-relative">
           <div className="text-center text-black d-flex flex-column align-items-center gap-1">
             <img
-              src={`https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/${random()}.jpg`}
+              src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
               alt="Avatar"
               width="210px"
               className="m-4"
