@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { fetchTrainer } from "../services/backend-service/trainer.service";
 import { getClientsByTrainerId } from "../services/backend-service/client.service";
+// import user from "../data/user.json"
 
 const TrainerContext = createContext();
 
@@ -13,7 +14,7 @@ function TrainerProviderWrapper({ children }) {
     const response = await fetchTrainer(1)
     setTrainer(response)
     setTrainerId(response.id)
-  }
+  }  
 
   const getClients = async (trainerId) => {
     if(trainer){

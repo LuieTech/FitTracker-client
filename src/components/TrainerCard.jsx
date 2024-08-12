@@ -1,6 +1,7 @@
 import React from 'react'
 
-function TrainerCard({name, username, email, phoneNumber}) {
+
+function TrainerCard({name, role, username, email, phoneNumber}) {
 
 
   return (

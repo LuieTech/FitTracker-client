@@ -60,8 +60,8 @@ function CreateClient({ onCreate }) {
         name="phoneNumber"
         value={formData.phoneNumber}
         onChange={handleInputChange}
-        placeholder="Phone Number"
-        type="number"
+        placeholder="(e.g., 123-456-7890)"
+        type="text"
         required
       />
 
