@@ -1,5 +1,12 @@
-import "./exercises/ExercisesList.css"
-function ExerciseBox({id, gifUrl, name, bodyPart, target}) {
+import "./exercises/ExercisesList.css";
+function ExerciseBox({ x }) {
+
+  if (!x) {
+    return <div className="alert alert-warning">No exercise data available.</div>;
+  }
+
+  const { id, gifUrl, name, bodyPart, target } = x;
+
   return (
     <div
       key={id}

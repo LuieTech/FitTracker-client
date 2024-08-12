@@ -1,11 +1,10 @@
 import { useTrainerContext } from "../../context/trainer.context"
-import ClientCard from "../ClientCard";
 import TrainerCard from "../TrainerCard";
-import "./Settings.css"
+import "./Account.css"
 
 import React, { useEffect, useState } from 'react'
 
-function Settings() {
+function Account() {
 
   const {trainer} = useTrainerContext();
 
@@ -16,7 +15,7 @@ function Settings() {
   );
 }
 
-export default Settings
+export default Account
 
 
     // <div className="trainer-profile">

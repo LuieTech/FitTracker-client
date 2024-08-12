@@ -19,7 +19,7 @@ function Clients() {
   }, [trainer]);
 
   const clients = clientsList.map((cl) => (
-    <Link to={`/client-details/${cl.id}`} key={cl.id}>
+    <Link to={`/homepage/client-details/${cl.id}`} key={cl.id}>
       <div  className="card">
         <h5 className="card-title">{cl.name}</h5>
         <div className="d-flex flex-column gap-2 pt-2">

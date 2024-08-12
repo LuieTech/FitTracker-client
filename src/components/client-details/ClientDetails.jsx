@@ -31,7 +31,7 @@ function ClientDetails() {
 
   const deleteClient = async (id) => {
     const response = await deleteClientById(id);
-    navigate("/clients");
+    navigate("/homepage/clients");
   };
 
   const deleteExercise = async (id) => {

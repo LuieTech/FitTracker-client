@@ -1,10 +1,14 @@
 
 import Sidebar from "../../components/sidebar/Sidebar";
-// import Navbar from "../../components/navbar/Navbar";
 import "./HomePage.css";
-import Dashboard from "../dashboard/Dashboard";
+// import Dashboard from "../dashboard/Dashboard";
 import { useTrainerContext } from "../../context/trainer.context";
 import "./HomePage.css"
+import { Route, Routes } from "react-router-dom";
+import ExercisesList from "../../components/exercises/ExercisesList";
+import Clients from "../../components/clients/Clients";
+import ClientDetails from "../../components/client-details/ClientDetails";
+import Account from "../../components/account/Account";
 
 function HomePage() {
 
@@ -27,11 +31,16 @@ function HomePage() {
         </footer>
       </aside>
       <section className="main">
-        {/* <nav className="navbar">
-          <Navbar />
-        </nav> */}
         <article className="dash">
-          <Dashboard {...trainer}/>
+        <Routes>
+          <Route path="exercises" element={<ExercisesList />} />
+          <Route path="clients" element={<Clients />} />
+          <Route path="client-details/:clientId" element={<ClientDetails />} />
+          <Route path="settings" element={<Account />} />
+
+          <Route path="*" element={<Account />} />
+        </Routes>
+          
         </article>
       </section>
     </div>

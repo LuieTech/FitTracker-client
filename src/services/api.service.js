@@ -9,14 +9,14 @@ const apiService = axios.create({
   },
 });
 
-export function getBodyPartExercise( bodyPart ){
-  return apiService.get("exercises/bodyPart/"+bodyPart)
-    .then((response) => response.data)
-    .catch((error) => console.error("Error while fetching in service file: ", error))
-}
 
 export function getAllExercises() {
   return apiService.get('/exercises')
-    .then((response) => response.data)
+    .then((response) => {
+      return response.data
+      console.log("this is from api service: ",response.data);    
+    })
     .catch(error => console.error("Error while fetching in service file: ", error))
 }
+
+
