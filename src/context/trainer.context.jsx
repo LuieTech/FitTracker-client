@@ -14,7 +14,8 @@ function TrainerProviderWrapper({ children }) {
   const getClients = async (trainerId) => {
     if(trainer){
       try {
-        const response = await getClientsByTrainerId(trainerId)
+        const response = await getClientsByTrainerId(trainerId)    
+        //console.log(response);  
         return response
       } catch (error) {
         console.log(error);

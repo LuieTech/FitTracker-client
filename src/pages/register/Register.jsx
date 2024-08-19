@@ -38,7 +38,7 @@ function Register() {
   return (
     <>
       <div className="d-flex justify-content-center align-items-center gap-3 pt-5">
-      <img src="/public/images/favicon.ico" alt="" /><span><h2>FitTracker</h2></span>
+        <img src="/public/images/favicon.ico" alt="" /><span><h2>FitTracker</h2></span>
       </div>
       <div className="container">
         <form

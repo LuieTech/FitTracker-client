@@ -19,15 +19,15 @@ function HomePage() {
       <aside className="sidebar">
         <header className="header">
           <img src="../../../public/images/favicon.ico" alt="App Logo" />
-          <span className="fw-bolder">FitTracker</span>
+          <span className="fw-bolder"><h3>FitTracker</h3></span>
         </header>
         <div className="options">
           <Sidebar />
         </div>
         
         <footer className="footer">
-          <img src="../../../public/images/luie.JPG" alt="trainer-img"/>
-          <span className="fw-bold">{trainer.name}</span>
+          {/* <img src="../../../public/images/luie.JPG" alt="trainer-img"/> */}
+          {/* <span className="fw-bold">{trainer.name}</span> */}
         </footer>
       </aside>
       <section className="main">

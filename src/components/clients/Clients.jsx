@@ -10,15 +10,19 @@ function Clients() {
   const { trainer, trainerId, getClients } = useTrainerContext();
 
   const obtainClients = async (id) => {
-    const response = await getClients(id);
+    const response = await getClients(id);    
+    //console.log(response);
     setClientsList(response);
   };
 
   useEffect(() => {
     trainerId && obtainClients(trainerId);
   }, [trainer]);
+  
 
   const clients = clientsList.map((cl) => (
+    
+    
     <Link to={`/homepage/client-details/${cl.id}`} key={cl.id}>
       <div  className="card">
         <h5 className="card-title">{cl.name}</h5>
