@@ -8,19 +8,6 @@ function TrainerProviderWrapper({ children }) {
 
   const [trainer, setTrainer] = useState({})
   const [trainerId, setTrainerId] = useState(null)
-
-  const loadTrainer = async () => {
-    const token = localStorage.getItem('authToken');
-    if (token && trainerId) {
-      try {
-        const trainerData = await fetchTrainer(trainerId);
-        setTrainer(trainerData);
-        setTrainerId(trainerData.id);
-      } catch (error) {
-        console.log("Failed to load trainer: ", error);
-      }
-    }
-  };
   
   
 
@@ -39,11 +26,7 @@ function TrainerProviderWrapper({ children }) {
   }
 
   useEffect(() => {
-    const storedTrainerId = localStorage.getItem('trainerId');
-    if (storedTrainerId) {
-      setTrainerId(storedTrainerId);
-      loadTrainer();
-    }
+
   }, []);
   
 

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import { loginTrainer } from "../../services/backend-service/trainer.service";
 import { useTrainerContext } from "../../context/trainer.context";
@@ -18,29 +18,22 @@ function Login() {
     setLoginData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (event) => {
+  function handleSubmit(event){
     event.preventDefault();
-    try {
-      const { trainerData, token, refreshToken } = await loginTrainer(loginData);
-      
-      // Guarda los tokens en localStorage
-      localStorage.setItem('authToken', token);
-      localStorage.setItem('refreshToken', refreshToken);
-      localStorage.setItem('trainerId', trainerData.id);
 
-      
-      // Guarda el trainer en el contexto
-      setTrainer(trainerData);
-      setTrainerId(trainerData.id);
-      
-      
-      // Redirige a la página de clientes
-      navigate("/homepage/clients");
+    try {
+      loginTrainer(loginData)
+        .then((response) => {
+          console.log("response from Login page: ", response);
+          setTrainer(response);
+          setTrainerId(response.id);
+          navigate("/homepage/account");
+        })
     } catch (error) {
       console.log("Error during login: ", error);
-      // Maneja los errores del login aquí, por ejemplo mostrando un mensaje al usuario
     }
-  };
+
+  }
   
   
 

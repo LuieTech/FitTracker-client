@@ -9,7 +9,7 @@ service.interceptors.request.use(
     (config) => {
       const token = localStorage.getItem("authToken");
       // Evitar añadir el token en las solicitudes de registro
-      if (token && config.url !== '/auth/register') {
+      if (token && config.url !== '/auth/register' && config.url !== '/auth/login') {
         config.headers.Authorization = `Bearer ${token}`;
       }
       return config;
@@ -35,36 +35,13 @@ export function registerTrainer(body) {
 export function loginTrainer(body) {
   return service
     .post("/auth/login", body)
-    .then(async (res) => {
-      console.log("Tokens received: ", res.data);
-
-      // Guarda los tokens en el localStorage
-      localStorage.setItem("authToken", res.data.token);
-      localStorage.setItem("refreshToken", res.data.refreshToken);
-
-      // Usa el accessToken para obtener los datos del Trainer
-      const trainerData = await fetchTrainerData(); // Cambiaré cómo obtienes el ID del Trainer
-      return {
-        trainerData,
-        token: res.data.token,
-        refreshToken: res.data.refreshToken,
-      };
+    .then((response) => {
+      localStorage.setItem("authToken", response.data.token);
+      localStorage.setItem("refreshToken", response.data.refreshToken);
+      return service.get("/auth/me");
     })
-    .catch((error) => {
-      console.log("Error during login: ", error);
-      throw error;
-    });
+    .then((response) => response.data)
+    .catch((error) => console.log("Error during login: ", error));
 }
 
-export function fetchTrainerData() {
-  return service
-    .get("/auth/me") // o el endpoint que tengas configurado para obtener los datos del usuario
-    .then((res) => {
-      console.log("Trainer data received: ", res.data);
-      res.data;
-    })
-    .catch((error) => {
-      console.log("Error fetching trainer data: ", error);
-      throw error;
-    });
-}
+
