@@ -1,9 +1,13 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
+import { loginTrainer } from "../../services/backend-service/trainer.service";
+import { useTrainerContext } from "../../context/trainer.context";
 
 function Login() {
+  const { setTrainer, setTrainerId } = useTrainerContext();
   const [loginData, setLoginData] = useState({
+    username: "",
     email: "",
     password: "",
   });
@@ -16,9 +20,29 @@ function Login() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log("Login Data:", loginData);
-    navigate("/homepage/clients");
+    try {
+      const { trainerData, token, refreshToken } = await loginTrainer(loginData);
+      
+      // Guarda los tokens en localStorage
+      localStorage.setItem('authToken', token);
+      localStorage.setItem('refreshToken', refreshToken);
+      localStorage.setItem('trainerId', trainerData.id);
+
+      
+      // Guarda el trainer en el contexto
+      setTrainer(trainerData);
+      setTrainerId(trainerData.id);
+      
+      
+      // Redirige a la página de clientes
+      navigate("/homepage/clients");
+    } catch (error) {
+      console.log("Error during login: ", error);
+      // Maneja los errores del login aquí, por ejemplo mostrando un mensaje al usuario
+    }
   };
+  
+  
 
   return (
     <>
@@ -30,6 +54,15 @@ function Login() {
           onSubmit={handleSubmit}
           className="form-inputs d-flex  flex-column align-items-center justify-content-center"
         >
+          <input 
+            type="text" 
+            name="username" 
+            placeholder="Username" 
+            className="inputs form-control" 
+            value={loginData.username} 
+            onChange={handleInputChange} 
+            required
+          />
           <input
             type="email"
             name="email"
@@ -48,12 +81,12 @@ function Login() {
             onChange={handleInputChange}
             required
           />
-          <button type="submit" className="btn btn-primary mt-3">
+          <button type="submit" className="btn btn-primary btn-lg mt-3">
             Log In
           </button>
           <button
             type="button"
-            className="btn btn-link"
+            className="btn btn-sm btn-outline-light btn-lg"
             onClick={() => navigate("/register")}
           >
             Register

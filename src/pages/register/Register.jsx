@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../login/Login.css";
+import { registerTrainer } from "../../services/backend-service/trainer.service";
 
 function Register() {
   const [registerData, setRegisterData] = useState({
+    username: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -21,10 +23,17 @@ function Register() {
       alert("Passwords do not match!");
       return;
     }
-
-    console.log("Register Data:", registerData);
-    navigate("/login");
+  
+    try {
+      console.log("Registering trainer: ", registerData);
+      
+      await registerTrainer(registerData);
+      navigate("/login");
+    } catch (error) {
+      console.log("Error during registration: ", error);
+    }
   };
+  
 
   return (
     <>
@@ -36,6 +45,15 @@ function Register() {
           onSubmit={handleSubmit}
           className="form-inputs d-flex flex-column align-items-center"
         >
+          <input
+            type="text"
+            name="username"
+            placeholder="Username"
+            className="inputs form-control"
+            value={registerData.username}
+            onChange={handleInputChange}
+            required
+          />
           <input
             type="email"
             name="email"
@@ -65,14 +83,14 @@ function Register() {
           />
           <button
             type="submit"
-            className="btn btn-primary mt-3"
-            onClick={() => navigate("/register")}
+            className="btn btn-lg btn-primary mt-3"
+            onClick={() => handleSubmit}
           >
             Sign Up
           </button>
           <button
             type="button"
-            className="btn btn-link"
+            className="btn btn-sm btn-outline-light btn-lg"
             onClick={() => navigate("/login")}
           >
             Log In

@@ -32,7 +32,6 @@ function ExercisesList() {
   }, []);
 
   
-
   const saveExerciseToBackend = (exercise) => {
     if (clientId && exercise) {
       try {

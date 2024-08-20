@@ -1,5 +1,4 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { fetchTrainer } from "../services/backend-service/trainer.service";
 import { getClientsByTrainerId } from "../services/backend-service/client.service";
 // import user from "../data/user.json"
 
@@ -10,11 +9,20 @@ function TrainerProviderWrapper({ children }) {
   const [trainer, setTrainer] = useState({})
   const [trainerId, setTrainerId] = useState(null)
 
-  const getTrainer = async () => {
-    const response = await fetchTrainer(1)
-    setTrainer(response)
-    setTrainerId(response.id)
-  }  
+  const loadTrainer = async () => {
+    const token = localStorage.getItem('authToken');
+    if (token && trainerId) {
+      try {
+        const trainerData = await fetchTrainer(trainerId);
+        setTrainer(trainerData);
+        setTrainerId(trainerData.id);
+      } catch (error) {
+        console.log("Failed to load trainer: ", error);
+      }
+    }
+  };
+  
+  
 
   const getClients = async (trainerId) => {
     if(trainer){
@@ -30,15 +38,21 @@ function TrainerProviderWrapper({ children }) {
     
   }
 
-  useEffect(()=> {
-    getTrainer()
-  }, [])
+  useEffect(() => {
+    const storedTrainerId = localStorage.getItem('trainerId');
+    if (storedTrainerId) {
+      setTrainerId(storedTrainerId);
+      loadTrainer();
+    }
+  }, []);
+  
 
   const value = {
     trainer,
+    setTrainer,
+    setTrainerId,
     trainerId,
     getClients,
-    getTrainer,
 
   }
 
