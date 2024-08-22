@@ -44,6 +44,13 @@ export function loginTrainer(body) {
     .catch((error) => console.log("Error during login: ", error));
 }
 
+export function refreshTrainerData(){
+  return service
+    .get("/auth/me")
+    .then((response) => response.data)
+    .catch((error) => console.log("Error during refreshing user: ", error));
+}
+
 export function logoutTrainer() {
   localStorage.removeItem("authToken");
   localStorage.removeItem("refreshToken");

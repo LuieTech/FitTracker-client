@@ -1,7 +1,6 @@
 
 import Sidebar from "../../components/sidebar/Sidebar";
 import "./HomePage.css";
-// import Dashboard from "../dashboard/Dashboard";
 import { useTrainerContext } from "../../context/trainer.context";
 import "./HomePage.css"
 import { Route, Routes } from "react-router-dom";
@@ -26,7 +25,8 @@ function HomePage() {
         </div>
         
         <footer className="footer">
-          <img src="../../../public/images/luie.JPG" alt="trainer-img"/> 
+        <img className="avatar avatar-48 bg-light rounded-circle text-white p-2"
+          src="https://raw.githubusercontent.com/twbs/icons/main/icons/person-fill.svg"/>
           <span className="fw-bold">{trainer.username}</span>
         </footer>
       </aside>
