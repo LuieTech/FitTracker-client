@@ -57,15 +57,6 @@ function Login() {
             required
           />
           <input
-            type="text"
-            name="username"
-            placeholder="Username"
-            className="inputs form-control"
-            value={loginData.username}
-            onChange={handleInputChange}
-            required
-          />
-          <input
             type="email"
             name="email"
             placeholder="Email"
