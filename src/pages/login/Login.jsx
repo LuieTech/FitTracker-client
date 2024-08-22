@@ -24,7 +24,7 @@ function Login() {
     try {
       loginTrainer(loginData)
         .then((response) => {
-          console.log("response from Login page: ", response);
+          // console.log("response from Login page: ", response);
           setTrainer(response);
           setTrainerId(response.id);
           navigate("/homepage/account");
@@ -34,8 +34,6 @@ function Login() {
     }
 
   }
-  
-  
 
   return (
     <>

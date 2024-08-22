@@ -12,7 +12,7 @@ import Account from "../../components/account/Account";
 
 function HomePage() {
 
-  const {trainer} = useTrainerContext()
+  const { trainer } = useTrainerContext();
 
   return (
     <div className="home-page">
@@ -26,8 +26,8 @@ function HomePage() {
         </div>
         
         <footer className="footer">
-          {/* <img src="../../../public/images/luie.JPG" alt="trainer-img"/> */}
-          {/* <span className="fw-bold">{trainer.name}</span> */}
+          <img src="../../../public/images/luie.JPG" alt="trainer-img"/> 
+          <span className="fw-bold">{trainer.username}</span>
         </footer>
       </aside>
       <section className="main">

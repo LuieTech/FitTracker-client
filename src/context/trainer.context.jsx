@@ -29,10 +29,6 @@ function TrainerProviderWrapper({ children }) {
     setTrainer({})
     setTrainerId(null)
   };
-
-  useEffect(() => {
-
-  }, []);
   
 
   const value = {
