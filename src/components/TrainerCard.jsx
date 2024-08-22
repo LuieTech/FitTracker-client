@@ -1,22 +1,17 @@
-import React from 'react'
-
 
 function TrainerCard({name, role, username, email, phoneNumber}) {
+
+  
 
 
   return (
     <div className="d-flex flex-column align-items-center">
       <section className="d-flex">
         <div>
-          <div className="text-center text-black">
-            <img
-              src="../../../public/images/luie.JPG"
-              alt="Avatar"
-              width="210px"
-              className="m-4"
-              style={{borderRadius:"50%"}}
-            />
-            <h5>{name}</h5>
+          <div className="text-center text-black w-250 m-5">
+            <img className="avatar avatar-128 bg-light rounded-circle text-white p-2"
+              src="https://raw.githubusercontent.com/twbs/icons/main/icons/person-fill.svg"/>
+            <h5>{username}</h5>
             <p>Trainer</p>
           </div>
         </div>
@@ -32,7 +27,7 @@ function TrainerCard({name, role, username, email, phoneNumber}) {
                 <p className="text-muted"><i className="fas fa-phone me-2"></i>{phoneNumber}</p>
               </div>
               <div className="col- mb-3">
-                <p className="text-muted"><i className="fas fa-user me-2"></i>{username}</p>
+                <p className="text-muted"><i className="fas fa-user me-2"></i>{name}</p>
               </div>
             </div>
             <h6>Appointments:</h6>
