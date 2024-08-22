@@ -36,7 +36,7 @@ function HomePage() {
           <Route path="exercises" element={<ExercisesList />} />
           <Route path="clients" element={<Clients />} />
           <Route path="client-details/:clientId" element={<ClientDetails />} />
-          <Route path="settings" element={<Account />} />
+          <Route path="account" element={<Account />} />
 
           <Route path="*" element={<Account />} />
         </Routes>

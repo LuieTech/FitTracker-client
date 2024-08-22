@@ -1,5 +1,4 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { fetchTrainer } from "../services/backend-service/trainer.service";
 import { getClientsByTrainerId } from "../services/backend-service/client.service";
 // import user from "../data/user.json"
 
@@ -9,12 +8,8 @@ function TrainerProviderWrapper({ children }) {
 
   const [trainer, setTrainer] = useState({})
   const [trainerId, setTrainerId] = useState(null)
-
-  const getTrainer = async () => {
-    const response = await fetchTrainer(1)
-    setTrainer(response)
-    setTrainerId(response.id)
-  }  
+  
+  
 
   const getClients = async (trainerId) => {
     if(trainer){
@@ -27,18 +22,25 @@ function TrainerProviderWrapper({ children }) {
     } else {
       console.log("No trainer id");
     }
-    
   }
 
-  useEffect(()=> {
-    getTrainer()
-  }, [])
+  const logout = () => {
+    setTrainer({})
+    setTrainerId(null)
+  };
+
+  useEffect(() => {
+
+  }, []);
+  
 
   const value = {
     trainer,
+    setTrainer,
+    setTrainerId,
     trainerId,
     getClients,
-    getTrainer,
+    logout
 
   }
 
