@@ -9,9 +9,9 @@ function Sidebar() {
   const { logout } = useTrainerContext();
 
   const handleLogout = () => {
-    logoutTrainer();  // Clear localStorage
-    logout();         // Clear context
-    navigate("/login"); // Redirect to login page
+    logoutTrainer();  
+    logout();         
+    navigate("/login"); 
   };
 
   return (
