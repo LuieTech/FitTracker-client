@@ -1,13 +1,17 @@
+import { useTrainerContext } from "../../context/trainer.context";
+import { logoutTrainer } from "../../services/backend-service/trainer.service";
 import "./Sidebar.css"
 import { Link, useNavigate } from 'react-router-dom';
 
 function Sidebar() {
 
   const navigate = useNavigate();
+  const { logout } = useTrainerContext();
 
   const handleLogout = () => {
-    // Add any logout logic or cleanup here if necessary
-    navigate('/login');
+    logoutTrainer();  // Clear localStorage
+    logout();         // Clear context
+    navigate("/login"); // Redirect to login page
   };
 
   return (

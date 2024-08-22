@@ -22,8 +22,12 @@ function TrainerProviderWrapper({ children }) {
     } else {
       console.log("No trainer id");
     }
-    
   }
+
+  const logout = () => {
+    setTrainer({})
+    setTrainerId(null)
+  };
 
   useEffect(() => {
 
@@ -36,6 +40,7 @@ function TrainerProviderWrapper({ children }) {
     setTrainerId,
     trainerId,
     getClients,
+    logout
 
   }
 

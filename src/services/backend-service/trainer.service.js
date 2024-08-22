@@ -44,4 +44,9 @@ export function loginTrainer(body) {
     .catch((error) => console.log("Error during login: ", error));
 }
 
+export function logoutTrainer() {
+  localStorage.removeItem("authToken");
+  localStorage.removeItem("refreshToken");
+  localStorage.removeItem("trainerId");
+}
 
