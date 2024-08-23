@@ -19,7 +19,6 @@ service.interceptors.request.use(
 
 //Create
 export function createClient(body) {
-  console.log("body client desde el service", body);
   return service
     .post("/clients", body)
     .then((res) => res.data)

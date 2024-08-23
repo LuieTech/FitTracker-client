@@ -21,8 +21,6 @@ export function registerTrainer(body) {
   return service
     .post("/auth/register", body)
     .then((res) => {
-      console.log("this is the registered trainer from service: ", res.data);
-
       res.data;
     })
     .catch((error) =>
