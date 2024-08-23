@@ -22,7 +22,6 @@ function Clients() {
 
   const clients = clientsList.map((cl) => (
     
-    
     <Link to={`/homepage/client-details/${cl.id}`} key={cl.id}>
       <div  className="card">
         <h5 className="card-title">{cl.name}</h5>
