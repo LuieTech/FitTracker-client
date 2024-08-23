@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useTrainerContext } from "../../context/trainer.context"
 import TrainerCard from "../TrainerCard";
 import "./Account.css"

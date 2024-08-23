@@ -68,6 +68,9 @@ export default function ClientCard({
               ></i>
             </h6>
             <hr className="mt-3 mb-4" />
+            <div className="col- mb-3">
+                <p className="text-muted"><i className="fas fa-user me-2"></i>{name}</p>
+              </div>
             <div className="row pt-1 mb-4">
               <div className="col- mb-3">
                 <p className="text-muted">

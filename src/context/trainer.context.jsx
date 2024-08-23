@@ -54,7 +54,8 @@ function TrainerProviderWrapper({ children }) {
     setTrainerId,
     trainerId,
     getClients,
-    logout
+    logout,
+    loadTrainerFromLocalStorage
 
   }
 

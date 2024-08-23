@@ -5,19 +5,17 @@ const service = axios.create({
 });
 
 service.interceptors.request.use(
-  service.interceptors.request.use(
-    (config) => {
-      const token = localStorage.getItem("authToken");
-      // Evitar añadir el token en las solicitudes de registro
-      if (token && config.url !== '/auth/register' && config.url !== '/auth/login') {
-        config.headers.Authorization = `Bearer ${token}`;
-      }
-      return config;
-    },
-    (error) => {
-      return Promise.reject(error);
+  (config) => {
+    const token = localStorage.getItem("authToken");
+    if (token && config.url !== '/auth/register' && config.url !== '/auth/login') {
+      config.headers.Authorization = `Bearer ${token}`;
     }
-  ));  
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
 
 export function registerTrainer(body) {
   return service
@@ -49,6 +47,13 @@ export function refreshTrainerData(){
     .get("/auth/me")
     .then((response) => response.data)
     .catch((error) => console.log("Error during refreshing user: ", error));
+}
+
+export function updateTrainerInfo(id , body) {
+  return service
+    .patch(`/trainers/update-info/${id}`, body)
+    .then((response) => response.data)
+    .catch((error) => console.log("Error during updating user: ", error));
 }
 
 export function logoutTrainer() {
