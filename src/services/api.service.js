@@ -13,8 +13,8 @@ const apiService = axios.create({
 export function getAllExercises() {
   return apiService.get('/exercises')
     .then((response) => {
+      // console.log("this is from api service: ", response.data);    
       return response.data
-      console.log("this is from api service: ",response.data);    
     })
     .catch(error => console.error("Error while fetching in service file: ", error))
 }

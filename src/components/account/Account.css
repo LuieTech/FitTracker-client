@@ -12,3 +12,16 @@
   justify-content: center;
   flex-grow: 1;
 }
+
+.avatar-256 {
+  width: 256px;
+  height: 256px;
+}
+
+.card-body {
+  padding: 40px; /* Ajusta según sea necesario */
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-weight: bold;
+}

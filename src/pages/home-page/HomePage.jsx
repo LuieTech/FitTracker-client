@@ -29,7 +29,7 @@ function HomePage() {
             className="avatar avatar-48 bg-light rounded-circle text-white p-2"
             src="https://raw.githubusercontent.com/twbs/icons/main/icons/person-fill.svg"
           />
-          <span className="fw-bold ">{trainer.username}</span>
+          <span className="h3">{trainer.username}</span>
         </footer>
       </aside>
       <section className="main">

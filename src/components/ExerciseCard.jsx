@@ -1,8 +1,6 @@
 import "./client-details/ClientDetails.css";
 
 function ExerciseCard({ id, gifUrl, name, instructions, bodyPart, handleOnDelete }) {
-  // console.log("this is the name", name);
-  // console.log("this is the bodyPart", bodyPart);
 
   return (
     <div className="card" style={{ width: "25rem" }}>

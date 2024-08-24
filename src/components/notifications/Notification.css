@@ -1,0 +1,8 @@
+/* Notification.css */
+.alert {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  transition: opacity 0.5s ease-in-out;
+}
