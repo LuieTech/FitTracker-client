@@ -59,14 +59,14 @@ export default function ClientCard({
         </div>
         <div className="info">
           <div className="card-body p-4">
-            <h6>
+            <h4>
               Information{" "}
               <i
                 onClick={handleOnDelete}
-                className="btn btn-danger fa fa-trash-alt ms-5"
+                className="btn btn-danger btn-sm fa fa-trash-alt ms-4"
                 aria-hidden="true"
               ></i>
-            </h6>
+            </h4>
             <hr className="mt-3 mb-4" />
             <div className="col- mb-3">
                 <p className="text-muted"><i className="fas fa-user me-2"></i>{name}</p>

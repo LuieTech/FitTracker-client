@@ -48,7 +48,7 @@ function TrainerCard({
         <div className="info">
           <div className="card-body p-4">
             <div className="d-flex">
-              <h6>Information</h6>
+              <h4>Information</h4>
               <i
                 className="fas fa-edit btn-sm btn-secondary ms-2"
                 role="button"
@@ -68,7 +68,6 @@ function TrainerCard({
                       value={updateInfo.phoneNumber}
                       onChange={handleOnChange}
                       placeholder="Enter phone number"
-                      // className={`form-control ${alert ? "border border-danger" : ""}`}
                       className="form-control"
                       onKeyDown={(event) => {
                         if (event.key === "Enter") {
@@ -76,6 +75,10 @@ function TrainerCard({
                           handleEdit(id, updateInfo);
                           setEdit(false);
                         }
+                      }}
+                      onBlur={() => {
+                        handleEdit(id, updateInfo);
+                        setEdit(false);
                       }}
                     />
                   ) : (
@@ -102,6 +105,10 @@ function TrainerCard({
                           handleEdit(id, updateInfo);
                           setEdit(false);
                         }
+                      }}
+                      onBlur={() => {
+                        handleEdit(id, updateInfo);
+                        setEdit(false);
                       }}
                     />
                   ) : (
