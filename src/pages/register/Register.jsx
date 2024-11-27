@@ -4,6 +4,7 @@ import "../login/Login.css";
 import { registerTrainer } from "../../services/backend-service/trainer.service";
 
 function Register() {
+  const [message, setMessage] = useState(false)
   const [registerData, setRegisterData] = useState({
     username: "",
     email: "",
@@ -26,7 +27,7 @@ function Register() {
   
     try {
       console.log("Registering trainer: ", registerData);
-      
+      setMessage(true)
       await registerTrainer(registerData);
       navigate("/login");
     } catch (error) {
@@ -45,6 +46,7 @@ function Register() {
           onSubmit={handleSubmit}
           className="form-inputs d-flex flex-column align-items-center"
         >
+          {message ? <span className="alert alert-warning">processing please wait...</span> : ""}
           <input
             type="text"
             name="username"
