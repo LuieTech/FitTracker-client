@@ -6,6 +6,8 @@ import { useTrainerContext } from "../../context/trainer.context";
 
 function Login() {
   const { setTrainer, setTrainerId } = useTrainerContext();
+  const [message, setMessage] = useState(false)
+
   const [loginData, setLoginData] = useState({
     username: "",
     email: "",
@@ -24,7 +26,7 @@ function Login() {
     try {
       loginTrainer(loginData)
         .then((response) => {
-          // console.log("response from Login page: ", response);
+          setMessage(true)
           setTrainer(response);
           setTrainerId(response.id);
           navigate("/homepage/account");
@@ -45,7 +47,8 @@ function Login() {
           onSubmit={handleSubmit}
           className="form-inputs d-flex  flex-column align-items-center justify-content-center"
         >
-          <input 
+          {message ? <span className="alert alert-warning">processing please wait...</span> : ""}
+          {/* <input 
             type="text" 
             name="username" 
             placeholder="Username" 
@@ -53,7 +56,7 @@ function Login() {
             value={loginData.username} 
             onChange={handleInputChange} 
             required
-          />
+          /> */}
           <input
             type="email"
             name="email"
