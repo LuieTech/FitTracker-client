@@ -18,8 +18,27 @@ service.interceptors.request.use(
 );
 
 export function registerTrainer(body) {
+
+  const formData = new FormData();
+
+  formData.append(
+    "data",
+    JSON.stringify({
+      username: body.username,
+      email: body.email,
+      password: body.password
+    })
+  )
+
+  if(body.avatar){
+    formData.append("avatar", body.avatar)
+  }
+
+  console.log("This is formData from service", formData);
+  
+
   return service
-    .post("/auth/register", body)
+    .post("/auth/register", formData)
     .then((res) => {
       res.data;
     })

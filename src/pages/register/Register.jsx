@@ -10,13 +10,22 @@ function Register() {
     email: "",
     password: "",
     confirmPassword: "",
+    avatar: ""
   });
+  const [avatarFile, setAvatarFile] = useState(null);
+
   const navigate = useNavigate();
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setRegisterData((prev) => ({ ...prev, [name]: value }));
   };
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    setAvatarFile(file)
+    setRegisterData((prev) => ({...prev, 'avatar': file}))
+  }
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -28,6 +37,7 @@ function Register() {
     try {
       console.log("Registering trainer: ", registerData);
       setMessage(true)
+
       await registerTrainer(registerData);
       navigate("/login");
     } catch (error) {
@@ -83,10 +93,16 @@ function Register() {
             onChange={handleInputChange}
             required
           />
+          <input
+            type="file"
+            name="avatar"
+            className="inputs form-control"
+            onChange={handleFileChange}
+          />
+         
           <button
             type="submit"
             className="btn btn-lg btn-primary mt-3"
-            onClick={() => handleSubmit}
           >
             Sign Up
           </button>
