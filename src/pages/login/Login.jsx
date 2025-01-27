@@ -7,7 +7,7 @@ import { useTrainerContext } from "../../context/trainer.context";
 function Login() {
   const { setTrainer, setTrainerId } = useTrainerContext();
   const [loginData, setLoginData] = useState({
-    username: "",
+    // username: "",
     email: "",
     password: "",
   });
@@ -45,7 +45,7 @@ function Login() {
           onSubmit={handleSubmit}
           className="form-inputs d-flex  flex-column align-items-center justify-content-center"
         >
-          <input 
+          {/* <input 
             type="text" 
             name="username" 
             placeholder="Username" 
@@ -53,7 +53,7 @@ function Login() {
             value={loginData.username} 
             onChange={handleInputChange} 
             required
-          />
+          /> */}
           <input
             type="email"
             name="email"
