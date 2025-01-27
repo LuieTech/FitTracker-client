@@ -6,8 +6,10 @@ import { useTrainerContext } from "../../context/trainer.context";
 
 function Login() {
   const { setTrainer, setTrainerId } = useTrainerContext();
+  const [message, setMessage] = useState(false)
+
   const [loginData, setLoginData] = useState({
-    // username: "",
+    username: "",
     email: "",
     password: "",
   });
@@ -24,7 +26,7 @@ function Login() {
     try {
       loginTrainer(loginData)
         .then((response) => {
-          // console.log("response from Login page: ", response);
+          setMessage(true)
           setTrainer(response);
           setTrainerId(response.id);
           navigate("/homepage/account");
@@ -38,13 +40,14 @@ function Login() {
   return (
     <>
       <div className="d-flex justify-content-center align-items-center gap-3 pt-5">
-        <img src="/public/images/favicon.ico" alt="" /><span><h2>FitTracker</h2></span>
+        <img src="/images/favicon.ico" alt="" /><span><h2>FitTracker</h2></span>
       </div>
       <div className="container ">
         <form
           onSubmit={handleSubmit}
           className="form-inputs d-flex  flex-column align-items-center justify-content-center"
         >
+          {message ? <span className="alert alert-warning">processing please wait...</span> : ""}
           {/* <input 
             type="text" 
             name="username" 

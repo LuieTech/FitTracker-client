@@ -12,22 +12,25 @@ function ExercisesList() {
   const [notification, setNotification] = useState("");
 
   const getExercises = async () => {
-    const storedData = localStorage.getItem("exercises");
-    if (storedData !== undefined && storedData !== null) {
-      // console.log("storedData", storedData);
-      setExercisesList(JSON.parse(storedData));
-      console.log("loaded from local storage");
-    } else {
-      try {
-        const data = await getAllExercises();
-        // console.log("data", data);
-        data && setExercisesList(data);
-        localStorage.setItem("exercises", JSON.stringify(data));
-        console.log("loaded from API call and saved to localStorage");
-      } catch (error) {
-        console.error("failed to fetch exercises", error);
-      }
-    }
+    // const storedData = localStorage.getItem("exercises");
+    // if (storedData !== undefined && storedData !== null) {
+    //   // console.log("storedData", storedData);
+    //   setExercisesList(JSON.parse(storedData));
+    //   console.log("loaded from local storage");
+    // } else {
+    //   try {
+    //     const data = await getAllExercises();
+    //     // console.log("data", data);
+    //     data && setExercisesList(data);
+    //     localStorage.setItem("exercises", JSON.stringify(data));
+    //     console.log("loaded from API call and saved to localStorage");
+    //   } catch (error) {
+    //     console.error("failed to fetch exercises", error);
+    //   }
+    // }
+    const data = await getAllExercises();
+    // console.log("data", data);
+    data && setExercisesList(data);
   };
 
   useEffect(() => {

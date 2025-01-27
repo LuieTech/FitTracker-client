@@ -120,11 +120,11 @@ function TrainerCard({
             <div className="row pt-3">
               <div className="col-6 mb-4">
                 <button className="btn btn-lg btn-success">
-                  <i className="fas fa-calendar-alt me-3"></i>
+                  
                   <a
                     href="https://calendar.google.com/calendar/u/0/r"
                     target="_blank"
-                  >
+                  ><i className="fas fa-calendar-alt me-3"></i>
                     Calendar
                   </a>
                 </button>

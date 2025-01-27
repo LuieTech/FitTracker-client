@@ -15,7 +15,7 @@ function HomePage() {
     <div className="home-page">
       <aside className="sidebar">
         <header className="header">
-          <img src="../../../public/images/favicon.ico" alt="App Logo" />
+          <img src="/images/favicon.ico" alt="App Logo" />
           <span className="fw-bolder">
             <h3>FitTracker</h3>
           </span>
@@ -28,6 +28,7 @@ function HomePage() {
           <img
             className="avatar avatar-48 bg-light rounded-circle text-white p-2"
             src="https://raw.githubusercontent.com/twbs/icons/main/icons/person-fill.svg"
+
           />
           <span className="h3">{trainer.username}</span>
         </footer>
